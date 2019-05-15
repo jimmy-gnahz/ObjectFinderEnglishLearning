@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
-  - tree
+  - Tree
+  - Flower
   layers:
   - Default
   - TransparentFX

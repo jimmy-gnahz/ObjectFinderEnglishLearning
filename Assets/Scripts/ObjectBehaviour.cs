@@ -19,10 +19,9 @@ public class ObjectBehaviour : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (TheDistance <= 3)
+        if (TheDistance <= 3 && GameManager.wordlist.Contains(PlayerCasting.currentObjectTag))
         {
             ActionDisplay.SetActive(true);
-            ActionText.SetActive(true);
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -34,7 +33,6 @@ public class ObjectBehaviour : MonoBehaviour
                     FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(false);
                     GameManager.currentLockedObjectTag = PlayerCasting.currentObjectTag;
                     ActionDisplay.SetActive(false);
-                    ActionText.SetActive(false);
                     StartCoroutine(ShowMessage("What is this?", 2));
                     //ThePlayer.SetActive(false)
                 }
@@ -59,6 +57,5 @@ public class ObjectBehaviour : MonoBehaviour
     void OnMouseExit()
     {
         ActionDisplay.SetActive(false);
-        ActionText.SetActive(false);
     }
 }

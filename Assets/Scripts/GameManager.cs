@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Button firstWord;
     public Button secondWord;
+    public Button thirdWord;
 
     public GameObject firstHeart;
     public GameObject secondHeart;
@@ -21,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        buttonList = new ArrayList() { firstWord, secondWord };
-        wordlist = new ArrayList(){"Tree", "Flower"};
+        buttonList = new ArrayList() { firstWord, secondWord, thirdWord };
+        wordlist = new ArrayList(){"Tree", "Flower", "Grass"};
         currentHealth = 3;
     }
 

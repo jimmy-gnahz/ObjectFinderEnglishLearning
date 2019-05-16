@@ -61,7 +61,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
+            if (m_MouseLook.lockCursor == true)
+            {
+                RotateView();
+            }
+            
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {

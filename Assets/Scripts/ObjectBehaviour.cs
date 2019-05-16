@@ -22,6 +22,7 @@ public class ObjectBehaviour : MonoBehaviour
         if (TheDistance <= 3 && GameManager.wordlist.Contains(PlayerCasting.currentObjectTag))
         {
             ActionDisplay.SetActive(true);
+            //StartCoroutine(ShowMessage(PlayerCasting.currentObjectTag, 0.5f));
         }
 
         if (Input.GetMouseButtonDown(0))

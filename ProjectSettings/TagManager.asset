@@ -9,6 +9,14 @@ TagManager:
   - Flower
   - Grass
   - Soil
+  - Branch
+  - Leaf
+  - Sprout
+  - Bud
+  - Root
+  - Stem
+  - Seed
+  - Sunshine
   layers:
   - Default
   - TransparentFX

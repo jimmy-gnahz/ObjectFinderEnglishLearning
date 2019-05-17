@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Button firstWord;
-    public Button secondWord;
-    public Button thirdWord;
+    public Button Word1;
+    public Button Word2;
+    public Button Word3;
+    public Button Word4;
 
     public GameObject firstHeart;
     public GameObject secondHeart;
@@ -22,8 +23,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        buttonList = new ArrayList() { firstWord, secondWord, thirdWord };
-        wordlist = new ArrayList(){"Tree", "Flower", "Grass"};
+        buttonList = new ArrayList() { Word1, Word2, Word3, Word4 };
+        wordlist = new ArrayList(){"Tree", "Flower", "Grass", "Soil"};
         currentHealth = 3;
     }
 

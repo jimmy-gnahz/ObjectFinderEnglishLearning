@@ -13,6 +13,8 @@ public class PauseGame : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(PlayerCasting.currentDirection);
+        //Debug.Log()
         if (Input.GetButtonDown("Cancel"))
         {
             if (gamePaused == false)

@@ -11,10 +11,10 @@ public class GameManager : MonoBehaviour
     public Button Word4;
     public Button Word5;
     public Button Word6;
-    //public Button Word7;
+    public Button Word7;
     public Button Word8;
     public Button Word9;
-    //public Button Word10;
+    public Button Word10;
     public Button Word11;
     public Button Word12;
 
@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
         
     public void Start()
     {
-        buttonList = new ArrayList() { Word1, Word2, Word3, Word4, Word5, Word6, Word8, Word9, Word11, Word12 };
-        wordlist = new ArrayList(){"Tree", "Flower", "Grass", "Soil", "Bud", "Leaf","Stem","Sprout","Branch","Seed"};
+        buttonList = new ArrayList() { Word1, Word2, Word3, Word4, Word5, Word6, Word7, Word8, Word9, Word10, Word11, Word12 };
+        wordlist = new ArrayList(){"Tree", "Flower", "Grass", "Soil", "Bud", "Leaf","Root","Stem","Sprout","Sunshine", "Branch","Seed"};
         currentHealth = 3;
     }
 

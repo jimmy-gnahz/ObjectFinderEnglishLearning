@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -26,8 +27,16 @@ public class GameManager : MonoBehaviour
     public GameObject FPC;
     public Text MessageText;
     public static ArrayList wordlist;
+
+    public GameObject gameOverScreen;
+    public GameObject LevelAudio;
+    public GameObject fadeOut;
+
+    public GameObject finishLevel;
+
     private ArrayList buttonList;
     private int currentHealth;
+
         
     public void Start()
     {
@@ -38,8 +47,9 @@ public class GameManager : MonoBehaviour
 
     public void CheckIfCorrect(Text buttonText)
     {
+        CheckWin();
         // Selected the right word
-        for(int i=0; i<wordlist.Count; i++){
+        for (int i=0; i<wordlist.Count; i++){
             if (GameManager.currentLockedObjectTag == (string) wordlist[i] &&
                 GameManager.currentLockedObjectTag == buttonText.text)
             {
@@ -54,14 +64,67 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (GameManager.currentLockedObjectTag == "Leaf" ||
+                GameManager.currentLockedObjectTag == "Branch")
+        {
+            if (buttonText.text == "Tree")
+            {
+                StartCoroutine(ShowMessage("Correct!", 2));
+                int i = wordlist.IndexOf("Tree");
+                Button currentButton = (Button)buttonList[i];
+                currentButton.gameObject.SetActive(false);
+                wordlist.RemoveAt(i);
+                buttonList.RemoveAt(i);
+                FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(true);
+                return;
+            }
+        }
+
+        if (GameManager.currentLockedObjectTag == "Stem")
+        {
+            if (buttonText.text == "Flower")
+            {
+                StartCoroutine(ShowMessage("Correct!", 2));
+                int i = wordlist.IndexOf("Flower");
+                Button currentButton = (Button)buttonList[i];
+                currentButton.gameObject.SetActive(false);
+                wordlist.RemoveAt(i);
+                buttonList.RemoveAt(i);
+                FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(true);
+                return;
+            }
+        }
+
         // Selected the wrong word 
         StartCoroutine(ShowMessage("Incorrect!", 1));
         currentHealth--;
         updateHealth();
         if (currentHealth <= 0)
         {
-            StartCoroutine(ShowMessage("GAME OVER", 10));
+            StartCoroutine(GameOver());
         }
+    }
+
+    void CheckWin()
+    {
+        //if (wordlist.Count <= 0)
+        //{
+            fadeOut.SetActive(true);
+            finishLevel.GetComponent<FinishLevel>().Finish();
+            
+        //}
+    }
+
+    IEnumerator GameOver()
+    {
+        gameOverScreen.SetActive(true);
+        Time.timeScale = 0.3f;
+        yield return new WaitForSecondsRealtime(1);
+        LevelAudio.SetActive(false);
+        fadeOut.SetActive(true);
+        yield return new WaitForSecondsRealtime(2);
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
     }
 
     void updateHealth()

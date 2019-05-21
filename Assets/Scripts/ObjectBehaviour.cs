@@ -12,10 +12,11 @@ public class ObjectBehaviour : MonoBehaviour
     public GameObject FPC;
     private bool wasFacingSun = false;
 
+
     // Update is called once per frame
     void Update()
     {
-        if (isFacingSun() && GameManager.wordlist.Contains("Sunshine"))
+        if (IsFacingSun() && GameManager.wordlist.Contains("Sunshine"))
         {
             wasFacingSun = true;
             ActionDisplay.SetActive(true);
@@ -35,7 +36,7 @@ public class ObjectBehaviour : MonoBehaviour
         TheDistance = PlayerCasting.DistFromTarget;
     }
 
-    private bool isFacingSun()
+    private bool IsFacingSun()
     {
         if (PlayerCasting.currentDirection.y < 0.9f 
             && PlayerCasting.currentDirection.y > 0.7f

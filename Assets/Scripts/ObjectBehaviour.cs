@@ -48,7 +48,6 @@ public class ObjectBehaviour : MonoBehaviour
             return true;
         }
         return false;
-
     }
 
     void OnMouseOver()
@@ -71,11 +70,10 @@ public class ObjectBehaviour : MonoBehaviour
                     StartCoroutine(ShowMessage("What is this?", 2));
                     //ThePlayer.SetActive(false)
                 }
-            }
-            
-            else
-            {
-                StartCoroutine(ShowMessage("You have already found this object!", 1));
+                else
+                {
+                    StartCoroutine(ShowMessage("You have already found this object!", 1));
+                }
             }
         }
     }

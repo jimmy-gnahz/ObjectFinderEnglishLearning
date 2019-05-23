@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject finishLevel;
 
     private ArrayList buttonList;
-    private int currentHealth;
+    public static int currentHealth;
 
         
     public void Start()
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckIfCorrect(Text buttonText)
     {
-        CheckWin();
+        
         // Selected the right word
         for (int i=0; i<wordlist.Count; i++){
             if (GameManager.currentLockedObjectTag == (string) wordlist[i] &&
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
                 wordlist.RemoveAt(i);
                 buttonList.RemoveAt(i);
                 FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(true);
+                CheckWin();
                 return;
             }
         }
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
                 wordlist.RemoveAt(i);
                 buttonList.RemoveAt(i);
                 FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(true);
+                CheckWin();
                 return;
             }
         }
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
                 wordlist.RemoveAt(i);
                 buttonList.RemoveAt(i);
                 FPC.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(true);
+                CheckWin();
                 return;
             }
         }
@@ -107,12 +110,12 @@ public class GameManager : MonoBehaviour
 
     void CheckWin()
     {
-        //if (wordlist.Count <= 0)
-        //{
+        if (wordlist.Count <= 0)
+        {
             fadeOut.SetActive(true);
             finishLevel.GetComponent<FinishLevel>().Finish();
             
-        //}
+        }
     }
 
     IEnumerator GameOver()

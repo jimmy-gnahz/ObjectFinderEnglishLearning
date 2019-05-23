@@ -27,8 +27,7 @@ public class PauseGame : MonoBehaviour
             }
             else
             {
-                resumeGame();
-                
+                resumeGame();  
             }
         }
     }
